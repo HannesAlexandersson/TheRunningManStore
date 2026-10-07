@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Client.Views.HomeView">
+      <StackPanel>
+
+            <TextBlock Foreground="{DynamicResource PrimaryTextColor}" Text="Welcome to RunningManStore TM" />
+
+            <Canvas Background="Transparent">
+
+                  <!-- Stick figure -->
+                  <Canvas Width="60"
+                          Height="100"
+                          Canvas.Left="100"
+                          Canvas.Top="150">
+
+                        <!-- Head -->
+                        <Ellipse Width="20"
+                                 Height="20"
+                                 Stroke="White"
+                                 StrokeThickness="3"
+                                 Canvas.Left="20"/>
+
+                        <!-- Body -->
+                        <Line StartPoint="30,20"
+                              EndPoint="30,60"
+                              Stroke="White"
+                              StrokeThickness="3"/>
+
+                        <!-- Arms -->
+                        <Line StartPoint="30,30"
+                              EndPoint="10,45"
+                              Stroke="White"
+                              StrokeThickness="3"/>
+
+                        <Line StartPoint="30,30"
+                              EndPoint="50,45"
+                              Stroke="White"
+                              StrokeThickness="3"/>
+
+                        <!-- Legs -->
+                        <Line StartPoint="30,60"
+                              EndPoint="10,90"
+                              Stroke="White"
+                              StrokeThickness="3"/>
+
+                        <Line StartPoint="30,60"
+                              EndPoint="50,90"
+                              Stroke="White"
+                              StrokeThickness="3"/>
+
+                  </Canvas>
+
+            </Canvas>
+      </StackPanel>
+
+</UserControl>

@@ -1,0 +1,15 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <!-- Add Controls for Previewer Here -->
+    <Border Padding="20"></Border>
+  </Design.PreviewWith>
+  <!-- Add Styles Here -->
+  <Style Selector="Window">
+    <Setter Property="FontFamily" Value="{DynamicResource TextFont}" />
+  </Style>
+  <Style Selector="TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
+  </Style>
+
+</Styles>
