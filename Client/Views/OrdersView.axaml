@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Client.Views.OrdersView">
-  <Grid RowDefinitions="*,Auto" Background="{DynamicResource PrimaryBgColor}">
-    <TextBlock Text="ORDERS = 0 print(sadface)" /> <!-- View header -->
-    <StackPanel Grid.Row="0" Spacing="8"></StackPanel>
-  </Grid>
+
+  <TextBlock Classes="h1" Text="ORDERS = 0 print(sadface)" /> <!-- View header -->
+
+
 
 
 
