@@ -8,6 +8,6 @@ public class OrdersViewModel : ViewModelBase
 {
     public OrdersViewModel()
     {
-        PageTitle = "Orders";
+        PageTitle = "ORDERS = 0 print(sadface)";
     }
 }

@@ -2,13 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Client.Views.OrdersView">
+             x:Class="Client.Views.OrdersView"
+             x:DataType="vm:CustomersViewModel">
 
-  <TextBlock Classes="h1" Text="ORDERS = 0 print(sadface)" /> <!-- View header -->
-
-
-
-
+  <TextBlock Classes="h1" Text="{Binding PageTitle}" />
 
 </UserControl>

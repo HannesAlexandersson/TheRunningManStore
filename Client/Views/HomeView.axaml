@@ -2,11 +2,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Client.Views.HomeView">
+             x:Class="Client.Views.HomeView"
+             x:DataType="vm:CustomersViewModel">
       <StackPanel>
 
-            <TextBlock Classes="h1" Text="Welcome to RunningManStore TM" />
+            <TextBlock Classes="h1" Text="{Binding PageTitle}" />
 
             <Canvas Background="Transparent">
 

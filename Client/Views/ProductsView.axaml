@@ -2,7 +2,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Client.Views.ProductsView">
-  <TextBlock Classes="h1" Text="Our Products" />
+             x:Class="Client.Views.ProductsView"
+             x:DataType="vm:ProductsViewModel">
+  <Design.DataContext>
+    <vm:ProductsViewModel></vm:ProductsViewModel>
+  </Design.DataContext>
+  <StackPanel>
+    <TextBlock Classes="h1" Text="{Binding PageTitle}" />
+    <Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*" HorizontalAlignment="Stretch">
+      <Label Grid.Column="0" FontSize="25"  Foreground="{DynamicResource PrimaryTextColor}" Content="ID" />
+      <Label Grid.Column="1" FontSize="25" Foreground="{DynamicResource PrimaryTextColor}" Content="Name" />
+      <Label Grid.Column="2" FontSize="25" Foreground="{DynamicResource PrimaryTextColor}" Content="Supplier" />
+      <Label Grid.Column="3" FontSize="25" Foreground="{DynamicResource PrimaryTextColor}" Content="price" HorizontalAlignment="Right" />
+    </Grid>
+    <ItemsControl ItemsSource="{Binding Products}"> <!-- iterative control structure. bind to list/array -->
+    <ItemsControl.ItemTemplate> <!--set up template for the iterative data -->
+    <DataTemplate>
+
+      <Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*" HorizontalAlignment="Stretch">
+        <!-- <StackPanel Grid.Row="0" Spacing="50" Orientation="Horizontal" HorizontalAlignment="Stretch"  Background="red" > -->
+        <Label Grid.Column="0"  Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding ItemNumber}" />
+        <Label Grid.Column="1" Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding Name}" />
+        <Label Grid.Column="2" Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding SupplierName}" />
+        <Label Grid.Column="3" Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding Price}" />
+
+        <!--  </StackPanel> -->
+      </Grid>
+
+    </DataTemplate>
+    </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </StackPanel>
 </UserControl>
