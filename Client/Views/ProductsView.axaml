@@ -5,30 +5,33 @@
              xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Client.Views.ProductsView"
-             x:DataType="vm:ProductsViewModel">
+             x:DataType="vm:ProductsViewModel"
+             Background="{DynamicResource PrimaryBgColor}"
+             Foreground="{DynamicResource PrimaryTextColor}"
+             >
   <Design.DataContext>
     <vm:ProductsViewModel></vm:ProductsViewModel>
   </Design.DataContext>
   <StackPanel>
-    <TextBlock Classes="h1" Text="{Binding PageTitle}" />
-    <Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*" HorizontalAlignment="Stretch">
-      <Label Grid.Column="0" FontSize="25"  Foreground="{DynamicResource PrimaryTextColor}" Content="ID" />
-      <Label Grid.Column="1" FontSize="25" Foreground="{DynamicResource PrimaryTextColor}" Content="Name" />
-      <Label Grid.Column="2" FontSize="25" Foreground="{DynamicResource PrimaryTextColor}" Content="Supplier" />
-      <Label Grid.Column="3" FontSize="25" Foreground="{DynamicResource PrimaryTextColor}" Content="price" HorizontalAlignment="Right" />
-    </Grid>
+    <TextBlock Classes="h1" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
+    <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
+      <Grid ColumnDefinitions="100, 200, 200, *" RowDefinitions="*" HorizontalAlignment="Stretch">
+        <Label FontSize="25" FontWeight="Bold"  Content="Art.nr" />
+        <Label Grid.Column="1" FontSize="25" FontWeight="Bold"  Content="Name" />
+        <Label Grid.Column="2" FontSize="25" FontWeight="Bold"  Content="Supplier" />
+        <Label Grid.Column="3" FontSize="25" FontWeight="Bold"  Content="price" HorizontalAlignment="Right" />
+      </Grid>
+    </Border>
+
     <ItemsControl ItemsSource="{Binding Products}"> <!-- iterative control structure. bind to list/array -->
     <ItemsControl.ItemTemplate> <!--set up template for the iterative data -->
     <DataTemplate>
+      <Grid ColumnDefinitions="100, 200, 200, *" >
+        <Label Grid.Column="0"  Content="{Binding ItemNumber}" />
+        <Label Grid.Column="1"  Content="{Binding Name}" />
+        <Label Grid.Column="2"  Content="{Binding SupplierName}" />
+        <Label Grid.Column="3"  Content="{Binding Price}" HorizontalAlignment="Right" />
 
-      <Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*" HorizontalAlignment="Stretch">
-        <!-- <StackPanel Grid.Row="0" Spacing="50" Orientation="Horizontal" HorizontalAlignment="Stretch"  Background="red" > -->
-        <Label Grid.Column="0"  Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding ItemNumber}" />
-        <Label Grid.Column="1" Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding Name}" />
-        <Label Grid.Column="2" Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding SupplierName}" />
-        <Label Grid.Column="3" Foreground="{DynamicResource PrimaryTextColor}" Content="{Binding Price}" />
-
-        <!--  </StackPanel> -->
       </Grid>
 
     </DataTemplate>
