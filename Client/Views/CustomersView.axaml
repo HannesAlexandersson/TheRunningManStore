@@ -13,24 +13,27 @@
     <vm:CustomersViewModel></vm:CustomersViewModel>
   </Design.DataContext>
   <StackPanel>
-    <TextBlock Classes="h1" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
+    <TextBlock Classes="pageTitle" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
     <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
-      <Grid ColumnDefinitions="200, 100, 200, *" RowDefinitions="*" HorizontalAlignment="Stretch">
+      <Grid ColumnDefinitions="200, 100, 200, *, 60, 60" RowDefinitions="*" HorizontalAlignment="Stretch">
         <Label FontSize="25" FontWeight="Bold"  Content="Name"  />
         <Label Grid.Column="1" FontSize="25" FontWeight="Bold" Content="Phone" />
         <Label Grid.Column="2" FontSize="25" FontWeight="Bold"  Content="Address"  />
-        <Label Grid.Column="3" FontSize="25" FontWeight="Bold" Content="Cust.Id"  HorizontalAlignment="Right" />
+        <Label Grid.Column="3" FontSize="25" FontWeight="Bold" Content="Cust.Id"  />
+
       </Grid>
     </Border>
 
     <ItemsControl ItemsSource="{Binding Customers}">
       <ItemsControl.ItemTemplate>
         <DataTemplate>
-          <Grid ColumnDefinitions="200, 100, 200, *" >
-            <Label Grid.Column="0"  Content="{Binding Name}" />
+          <Grid ColumnDefinitions="200, 100, 200, *, 60, 60" >
+            <Label Grid.Column="0"  Content="{Binding Name }" />
             <Label Grid.Column="1"  Content="{Binding PhoneNumber}"  />
             <Label Grid.Column="2"  Content="{Binding Address}" />
             <Label Grid.Column="3"  Content="{Binding CustomerId}" HorizontalAlignment="Right" />
+            <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding Edit}" />
+            <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding Delete}" />
 
           </Grid>
 

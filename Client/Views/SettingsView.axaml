@@ -7,6 +7,6 @@
              x:Class="Client.Views.SettingsView"
              x:DataType="vm:CustomersViewModel">
 
-  <TextBlock Classes="h1" Text="{Binding PageTitle}" />
+  <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
 
 </UserControl>

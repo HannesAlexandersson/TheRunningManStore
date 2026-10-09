@@ -1,0 +1,110 @@
+[
+    {
+        "customerId": "9edc25ec-814c-468d-a614-a1efacceead6",
+        "name": "Hannes Alexandersson",
+        "address": "Munkebäcksgatan 23 H",
+        "phoneNumber": "0790112009"
+    },
+    {
+        "customerId": "bb06e411-c912-4417-9b2a-792098474d59",
+        "name": "Rune Andersson",
+        "address": "Avenyn 1",
+        "phoneNumber": "031-346598"
+    },
+    {
+        "customerId": "545c7fc1-8f36-4514-a173-6fbe27c661f2",
+        "name": "Bengt Hansson",
+        "address": "Boråsvägen 23",
+        "phoneNumber": "0701125847"
+    },
+    {
+        "customerId": "6221717e-9721-46b5-9392-81b6ed29fef7",
+        "name": "Sven  Algotsson",
+        "address": "Storgatan 1",
+        "phoneNumber": "0798564986"
+    },
+    {
+        "customerId": "a1f8c2d4-7b3e-4a91-8c52-6d9e0f123456",
+        "name": "Erik Johansson",
+        "address": "Kungsportsavenyen 12",
+        "phoneNumber": "0701234567"
+    },
+    {
+        "customerId": "b2e9d3f5-8c4a-4b02-9d63-7e0f1a234567",
+        "name": "Anna Karlsson",
+        "address": "Södra Vägen 45",
+        "phoneNumber": "0734567890"
+    },
+    {
+        "customerId": "c3f0e4a6-9d5b-4c13-ae74-8f1a2b345678",
+        "name": "Lars Nilsson",
+        "address": "Parkgatan 8",
+        "phoneNumber": "0709876543"
+    },
+    {
+        "customerId": "d4a1f5b7-0e6c-4d24-bf85-9a2b3c456789",
+        "name": "Maria Svensson",
+        "address": "Östra Hamngatan 17",
+        "phoneNumber": "0723456789"
+    },
+    {
+        "customerId": "e5b2a6c8-1f7d-4e35-8096-ab3c4d567890",
+        "name": "Karl Eriksson",
+        "address": "Vasagatan 29",
+        "phoneNumber": "0761234567"
+    },
+    {
+        "customerId": "f6c3b7d9-2a8e-4f46-91a7-bc4d5e678901",
+        "name": "Eva Lindberg",
+        "address": "Linnégatan 36",
+        "phoneNumber": "0707654321"
+    },
+    {
+        "customerId": "07d4c8ea-3b9f-4057-a2b8-cd5e6f789012",
+        "name": "Anders Bergström",
+        "address": "Drottninggatan 14",
+        "phoneNumber": "0739876543"
+    },
+    {
+        "customerId": "18e5d9fb-4c0a-4168-b3c9-de6f70891234",
+        "name": "Karin Olsson",
+        "address": "Viktoriagatan 22",
+        "phoneNumber": "0702345678"
+    },
+    {
+        "customerId": "29f6ea0c-5d1b-4279-84da-ef7089123456",
+        "name": "Mikael Persson",
+        "address": "Andra Långgatan 19",
+        "phoneNumber": "0728765432"
+    },
+    {
+        "customerId": "3a07fb1d-6e2c-438a-95eb-f08123456789",
+        "name": "Sofia Gustafsson",
+        "address": "Fjärde Långgatan 7",
+        "phoneNumber": "0765432109"
+    },
+    {
+        "customerId": "4b180c2e-7f3d-449b-a6fc-018234567890",
+        "name": "Peter Larsson",
+        "address": "Karl Johansgatan 31",
+        "phoneNumber": "0706543210"
+    },
+    {
+        "customerId": "5c291d3f-804e-45ac-b70d-129345678901",
+        "name": "Linda Berg",
+        "address": "Redbergsvägen 5",
+        "phoneNumber": "0732109876"
+    },
+    {
+        "customerId": "6d3a2e40-915f-46bd-c81e-23a456789012",
+        "name": "Thomas Wikström",
+        "address": "Friggagatan 18",
+        "phoneNumber": "0703456789"
+    },
+    {
+        "customerId": "7e4b3f51-a260-47ce-d92f-34b567890123",
+        "name": "Helena Sjöberg",
+        "address": "Övre Husargatan 11",
+        "phoneNumber": "0726543210"
+    }
+]

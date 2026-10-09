@@ -8,7 +8,7 @@
              x:DataType="vm:CustomersViewModel">
       <StackPanel>
 
-            <TextBlock Classes="h1" Text="{Binding PageTitle}" />
+            <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
 
             <Canvas Background="Transparent">
 

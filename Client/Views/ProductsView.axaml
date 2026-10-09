@@ -13,24 +13,28 @@
     <vm:ProductsViewModel></vm:ProductsViewModel>
   </Design.DataContext>
   <StackPanel>
-    <TextBlock Classes="h1" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
+    <TextBlock Classes="pageTitle" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
     <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
-      <Grid ColumnDefinitions="100, 200, 200, *" RowDefinitions="*" HorizontalAlignment="Stretch">
-        <Label FontSize="25" FontWeight="Bold"  Content="Art.nr" />
+      <Grid ColumnDefinitions="100, 200, 200, *, 60,60" RowDefinitions="*" HorizontalAlignment="Stretch"> <!--add two extra columns with 10 space to fill the extra space-->
+      <Label FontSize="25" FontWeight="Bold"  Content="Art.nr" />
         <Label Grid.Column="1" FontSize="25" FontWeight="Bold"  Content="Name" />
         <Label Grid.Column="2" FontSize="25" FontWeight="Bold"  Content="Supplier" />
         <Label Grid.Column="3" FontSize="25" FontWeight="Bold"  Content="price" HorizontalAlignment="Right" />
+        <Label Grid.Column="4" />
+        <Label Grid.Column="5" />
       </Grid>
     </Border>
 
-    <ItemsControl ItemsSource="{Binding Products}"> <!-- iterative control structure. bind to list/array -->
+    <ItemsControl ItemsSource="{Binding Products}"> <!-- iterative control structure. bind to this list/array/class -->
     <ItemsControl.ItemTemplate> <!--set up template for the iterative data -->
     <DataTemplate>
-      <Grid ColumnDefinitions="100, 200, 200, *" >
+      <Grid ColumnDefinitions="100, 200, 200, *, 60, 60" >
         <Label Grid.Column="0"  Content="{Binding ItemNumber}" />
         <Label Grid.Column="1"  Content="{Binding Name}" />
         <Label Grid.Column="2"  Content="{Binding SupplierName}" />
-        <Label Grid.Column="3"  Content="{Binding Price}" HorizontalAlignment="Right" />
+        <Label Grid.Column="3"  Content="{Binding Price}" HorizontalAlignment="Right" /> <!-- Add icons to cast and edit -->
+        <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding Edit}" />
+        <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding Delete}" />
 
       </Grid>
 
