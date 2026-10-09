@@ -2,10 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Client.Views.SettingsView">
-  <Grid RowDefinitions="*,Auto" Background="{DynamicResource PrimaryBgColor}">
-    <TextBlock Text="Settings page" /> <!-- View header -->
-    <StackPanel Grid.Row="0" Spacing="8"></StackPanel>
-  </Grid>
+             x:Class="Client.Views.SettingsView"
+             x:DataType="vm:CustomersViewModel">
+
+  <TextBlock Classes="h1" Text="{Binding PageTitle}" />
+
 </UserControl>
