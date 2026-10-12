@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Client.Interfaces;
 using Client.Models;
 using Client.Repositories;
 
 namespace Client.Services;
 
-public class CustomerServices
+public class CustomerServices : ICustomerService
 {
-    public static List<Customer> ListAllCustomers()
+    public List<Customer> List()
     {
         var storage = new Storage<Customer>();
         var path = string.Concat(Environment.CurrentDirectory, "/Data/customers.json");

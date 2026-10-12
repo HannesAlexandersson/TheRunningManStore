@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Client.Interfaces;
 using Client.Models;
 using Client.Repositories;
 using Client.Services;
@@ -13,11 +14,15 @@ namespace Client.ViewModels;
 
 public partial class ProductsViewModel : ViewModelBase
 {
+    private IProductService _service;
     [ObservableProperty]
     public partial ObservableCollection<Product> Products { get; set; } = []; // instead of generic list and array we use ObservableCollection for auto updating the collection whenever it changes
-    public ProductsViewModel()
+
+    public ProductsViewModel() { }
+    public ProductsViewModel(IProductService service)
     {
         PageTitle = "Products";
+        _service = service;
         LoadProducts();
 
     }
@@ -33,12 +38,9 @@ public partial class ProductsViewModel : ViewModelBase
       } */
     private void LoadProducts()
     {
-        /*  var products = ProductServices.ListAllProducts(); // create a new Observablecollection of the products list via its internal constructor
-         Products = new ObservableCollection<Product>(products); 
-         */
         try
         {
-            Products = new ObservableCollection<Product>(ProductServices.ListAllProducts()); // same thing but in oneline 
+            Products = new ObservableCollection<Product>(_service.List());
 
         }
         catch (Exception ex)

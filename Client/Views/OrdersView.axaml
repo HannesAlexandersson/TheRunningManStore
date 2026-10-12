@@ -5,8 +5,40 @@
              xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Client.Views.OrdersView"
-             x:DataType="vm:CustomersViewModel">
+             x:DataType="vm:OrdersViewModel"
+             Background="{DynamicResource PrimaryBgColor}"
+             Foreground="{DynamicResource PrimaryTextColor}"
+             >
+  <Design.DataContext>
+    <vm:OrdersViewModel></vm:OrdersViewModel>
+  </Design.DataContext>
+  <StackPanel>
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+    <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
+      <Grid ColumnDefinitions="100,  200, *, 60,60" RowDefinitions="*" HorizontalAlignment="Stretch"> <!--add two extra columns with 10 space to fill the extra space-->
 
-  <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+      <Label Grid.Column="0" FontSize="20" FontWeight="Bold"  Content="OrderId" />
+        <Label Grid.Column="3" FontSize="25" FontWeight="Bold"  Content="TotalSum" HorizontalAlignment="Right" />
+        <Label Grid.Column="4" />
+        <Label Grid.Column="5" />
+      </Grid>
+    </Border>
 
+
+    <ItemsControl ItemsSource="{Binding Orders}"> <!-- iterative control structure. bind to this list/array/class -->
+    <ItemsControl.ItemTemplate> <!--set up template for the iterative data -->
+    <DataTemplate>
+      <Grid ColumnDefinitions="100, 200, *, 60, 60">
+        <Label Grid.Column="0"  Content="{Binding OrderId}" />
+
+        <Label Grid.Column="3"  Content="{Binding TotalSum}" HorizontalAlignment="Right" /> <!-- Add icons to cast and edit -->
+        <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding Edit}" />
+        <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding Delete}" />
+
+      </Grid>
+
+    </DataTemplate>
+    </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </StackPanel>
 </UserControl>

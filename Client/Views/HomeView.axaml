@@ -5,10 +5,10 @@
              xmlns:vm="using:Client.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Client.Views.HomeView"
-             x:DataType="vm:CustomersViewModel">
+             x:DataType="vm:HomeViewModel">
       <StackPanel>
 
-            <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+            <TextBlock Classes="homeViewTitle" Text="Welcome to Running man" />
 
             <Canvas Background="Transparent">
 
