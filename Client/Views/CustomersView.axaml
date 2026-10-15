@@ -32,8 +32,8 @@
             <Label Grid.Column="1"  Content="{Binding PhoneNumber}"  />
             <Label Grid.Column="2"  Content="{Binding Address}" />
             <Label Grid.Column="3"  Content="{Binding CustomerId}" HorizontalAlignment="Right" />
-            <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding Edit}" />
-            <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding Delete}" />
+            <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding $parent[UserControl].DataContext.EditCommand}" CommandParameter="{Binding CustomerId}"  />
+            <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding  $parent[UserControl].DataContext.DeleteCommand}" CommandParameter="{Binding CustomerId}" />
 
           </Grid>
 

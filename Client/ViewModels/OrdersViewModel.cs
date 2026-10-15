@@ -6,6 +6,7 @@ using Client.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Client.Services;
 using Client.Interfaces;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
@@ -21,6 +22,17 @@ public partial class OrdersViewModel : ViewModelBase
         PageTitle = "ORDERS";
         _services = services;
         LoadOrders();
+    }
+
+    [RelayCommand]
+    public void Edit(string id)
+    {
+        Console.WriteLine("Edit clicked" + id);
+    }
+    [RelayCommand]
+    public void Delete(string id)
+    {
+        Console.WriteLine("Delete clicked" + id);
     }
 
     private void LoadOrders()

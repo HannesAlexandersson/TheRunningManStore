@@ -26,16 +26,16 @@ public partial class ProductsViewModel : ViewModelBase
         LoadProducts();
 
     }
-    /*   [RelayCommand]
-      public void Edit()
-      {
-          Console.WriteLine("Edit clicked");
-      }
-      [RelayCommand]
-      public void Delete()
-      {
-          Console.WriteLine("Delete clicked");
-      } */
+    [RelayCommand]
+    public void Edit(string itemNumber)
+    {
+        Console.WriteLine("Edit clicked" + itemNumber);
+    }
+    [RelayCommand]
+    public void Delete(string itemNumber)
+    {
+        Console.WriteLine("Delete clicked" + itemNumber);
+    }
     private void LoadProducts()
     {
         try

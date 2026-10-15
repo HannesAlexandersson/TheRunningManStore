@@ -32,9 +32,9 @@
         <Label Grid.Column="0"  Content="{Binding ItemNumber}" />
         <Label Grid.Column="1"  Content="{Binding Name}" />
         <Label Grid.Column="2"  Content="{Binding SupplierName}" />
-        <Label Grid.Column="3"  Content="{Binding Price}" HorizontalAlignment="Right" /> <!-- Add icons to cast and edit -->
-        <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding Edit}" />
-        <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding Delete}" />
+        <Label Grid.Column="3"  Content="{Binding Price}" HorizontalAlignment="Right" /> <!-- since we have bound all in the iteration controll to the list we send into the iterative control we need to tell productview where to look for the editcommand and deletecommand etc using DATACONTEXT -->
+        <Button Grid.Column="4" Command="{Binding $parent[UserControl].DataContext.EditCommand}" CommandParameter="{Binding ItemNumber}"  FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10"/>
+        <Button Grid.Column="5" Command="{Binding $parent[UserControl].DataContext.DeleteCommand}" CommandParameter="{Binding ItemNumber}" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" />
 
       </Grid>
 

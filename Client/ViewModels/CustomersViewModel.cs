@@ -6,6 +6,7 @@ using Client.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using Client.Interfaces;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
@@ -24,6 +25,16 @@ public partial class CustomersViewModel : ViewModelBase
         PageTitle = "Customer List"; // use the decorated property PageTitle from the base model
         _service = service;
         LoadAllCustomers();
+    }
+    [RelayCommand]
+    public void Edit(string id)
+    {
+        Console.WriteLine("Edit clicked" + id);
+    }
+    [RelayCommand]
+    public void Delete(string id)
+    {
+        Console.WriteLine("Delete clicked" + id);
     }
     private void LoadAllCustomers()
     {
