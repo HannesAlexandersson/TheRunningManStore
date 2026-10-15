@@ -19,6 +19,7 @@ public partial class App : Application
     {
         var collection = new ServiceCollection(); // bygger på interfacet ISrviceCollection
         collection.AddServices();
+
         var services = collection.BuildServiceProvider(); // this looks in colection which is all in the framweork that is a service, then build compile all that and put the result in services. IE paket all services and put them inservices to we can access them easily.
         var vm = services.GetRequiredService<MainWindowViewModel>(); // when the app starts we ask the service to give us what we want in this case the mainwidnowviewmodel take everytihgn in our servicecollectinoextension and pack into the services
         // initilize the new class where we use collectionservice        

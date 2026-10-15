@@ -10,9 +10,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
-public partial class CustomersViewModel : ViewModelBase
+public partial class CustomersViewModel : PageViewModel
 {
-    private ICustomerService _service;
+    private readonly ICustomerService _service;
     [ObservableProperty]
     public Customer? _selectedCustomer;
     [ObservableProperty]
@@ -24,6 +24,7 @@ public partial class CustomersViewModel : ViewModelBase
     {
         PageTitle = "Customer List"; // use the decorated property PageTitle from the base model
         _service = service;
+        PageName = Helpers.ApplicationNameEnum.Customers;
         LoadAllCustomers();
     }
     [RelayCommand]
@@ -44,8 +45,6 @@ public partial class CustomersViewModel : ViewModelBase
         }
         catch (Exception ex)
         {
-            /* System.Diagnostics.Debug.WriteLine(ex.ToString());
-            throw; */
             Console.WriteLine(ex.Message);
         }
     }

@@ -12,17 +12,18 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
-public partial class ProductsViewModel : ViewModelBase
+public partial class ProductsViewModel : PageViewModel
 {
-    private IProductService _service;
+    private readonly IProductService _service;
     [ObservableProperty]
     public partial ObservableCollection<Product> Products { get; set; } = []; // instead of generic list and array we use ObservableCollection for auto updating the collection whenever it changes
 
     public ProductsViewModel() { }
-    public ProductsViewModel(IProductService service)
+    public ProductsViewModel(IProductService service) // when i start this class i say "I need this service becasue the service know how this class interface works. 
     {
         PageTitle = "Products";
         _service = service;
+        PageName = Helpers.ApplicationNameEnum.Products;
         LoadProducts();
 
     }
@@ -41,7 +42,6 @@ public partial class ProductsViewModel : ViewModelBase
         try
         {
             Products = new ObservableCollection<Product>(_service.List());
-
         }
         catch (Exception ex)
         {

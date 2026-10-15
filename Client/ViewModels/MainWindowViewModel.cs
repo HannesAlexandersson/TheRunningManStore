@@ -1,5 +1,5 @@
 ﻿
-using Client.Models;
+using Client.Factories;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -7,35 +7,28 @@ namespace Client.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase // the base class is the one that inherits from observableobject now
 {
-    private readonly HomeViewModel _homeView;
-    private readonly ProductsViewModel _productsView;
-    private readonly SettingsViewModel _settingsView;
-    private readonly OrdersViewModel _ordersView;
-    private readonly CustomersViewModel _customersView;
-
+    private readonly PageViewFactory _factory;
     [ObservableProperty] // decorate the variable, remake it to an property somwhere behind the curtains, and let us get access to it anywhere OBS The class MUST be partial for this to work!!!
     public partial ViewModelBase CurrentView { get; set; } //  there exist an identical file somewhere udner the curtains that avalonia created for us, partial is for better performance 
 
     public MainWindowViewModel() { } // bara för designen preview ska fungera
-    public MainWindowViewModel(SettingsViewModel settingsView, ProductsViewModel productsViewModel, HomeViewModel homeView, CustomersViewModel customersView, OrdersViewModel ordersView)
+
+    // OBS PÅ FREDAG SKA VI GÖRA OM DETTA TILL ETT INTERFACE ISTÄLLET FÖR ATT TA IN FACTORYN I KONSTRUKTORN!!!
+    public MainWindowViewModel(PageViewFactory factory) // before when we had all the viewmodels in this constructor it caused all viewmodels to load on start even though they are transient services, so instead we remved all viewmodels and start using constructor injection to get what we need WHEN we need it instead
     {
-        _productsView = productsViewModel;
-        _homeView = homeView;
-        _customersView = customersView;
-        _ordersView = ordersView;
-        _settingsView = settingsView;
-        CurrentView = _homeView;
+        _factory = factory;
+        GoToHome();
     }
     [RelayCommand] // this makes the toolkit mvvm to be able to take these methods, give them new names (GoToHomeCommand) and make them public so we can access them whereveer
-    private void GoToHome() => CurrentView = _homeView;
+    private void GoToHome() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Home);
     [RelayCommand]
-    private void GoToProducts() => CurrentView = _productsView;
+    private void GoToProducts() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Products);
     [RelayCommand]
-    private void GoToSettings() => CurrentView = _settingsView;
+    private void GoToSettings() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Settings);
 
     [RelayCommand]
-    private void GoToOrders() => CurrentView = _ordersView;
+    private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Orders);
 
     [RelayCommand]
-    private void GoToCustomers() => CurrentView = _customersView;
+    private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Customers);
 }

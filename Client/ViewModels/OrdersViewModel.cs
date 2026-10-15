@@ -10,9 +10,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
-public partial class OrdersViewModel : ViewModelBase
+public partial class OrdersViewModel : PageViewModel
 {
-    private IOrderService _services;
+    private readonly IOrderService _services;
 
     [ObservableProperty]
     public partial ObservableCollection<Orders> Orders { get; set; } = [];
@@ -21,6 +21,7 @@ public partial class OrdersViewModel : ViewModelBase
     {
         PageTitle = "ORDERS";
         _services = services;
+        PageName = Helpers.ApplicationNameEnum.Orders;
         LoadOrders();
     }
 
