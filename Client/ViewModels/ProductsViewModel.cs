@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Client.Interfaces;
 using Client.Models;
 using Client.Repositories;
@@ -23,8 +24,8 @@ public partial class ProductsViewModel : PageViewModel
     {
         PageTitle = "Products";
         _service = service;
-        PageName = Helpers.ApplicationNameEnum.Products;
-        LoadProducts();
+        PageName = Enums.ApplicationNameEnum.Products;
+        Init();
 
     }
     [RelayCommand]
@@ -37,11 +38,16 @@ public partial class ProductsViewModel : PageViewModel
     {
         Console.WriteLine("Delete clicked" + itemNumber);
     }
-    private void LoadProducts()
+
+    private async void Init() // think of this like a useEffect in react
+    {
+        await LoadProducts();
+    }
+    private async Task LoadProducts()
     {
         try
         {
-            Products = new ObservableCollection<Product>(_service.List());
+            Products = new ObservableCollection<Product>(await _service.List());
         }
         catch (Exception ex)
         {

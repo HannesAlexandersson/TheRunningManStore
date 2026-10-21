@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Client.Views.AddNewProductView"
+             x:DataType="vm:AddNewProductViewModel"
+             Background="{DynamicResource PrimaryBgColor}"
+             Foreground="{DynamicResource PrimaryTextColor}">
+    <Design.DataContext>
+        <vm:AddNewProductViewModel></vm:AddNewProductViewModel>
+    </Design.DataContext>
+
+    <StackPanel>
+        <TextBlock Classes="pageTitle" Text="Ny Produkt" HorizontalAlignment="Center"/>
+
+        <Border BorderBrush="White" BorderThickness="1" Padding="20" Margin="0 20 0 0"
+                MinWidth="400" HorizontalAlignment="Center">
+            <StackPanel Spacing="15">
+                <Grid ColumnDefinitions="*, 200" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="12">
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Artikelnr" VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NewProduct.ItemNumber}" Background="white"/>
+
+                    <Label Grid.Row="1"  Grid.Column="0"  Content="Produktnamn" VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewProduct.Name}" Background="white"/>
+
+                    <Label Grid.Row="2" Grid.Column="0"  Content="Leverantör" VerticalAlignment="Center"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NewProduct.SupplierName}" Background="white"/>
+
+                    <Label Grid.Row="3" Grid.Column="0"  Content="Pris" VerticalAlignment="Center" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding NewProduct.Price}" Background="white" />
+                </Grid>
+
+                <Button BorderBrush="White" Content="Spara" Command="{Binding SaveCommand}"
+                        HorizontalAlignment="Center" Padding="25 5"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

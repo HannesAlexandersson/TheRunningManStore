@@ -24,7 +24,7 @@ public partial class CustomersViewModel : PageViewModel
     {
         PageTitle = "Customer List"; // use the decorated property PageTitle from the base model
         _service = service;
-        PageName = Helpers.ApplicationNameEnum.Customers;
+        PageName = Enums.ApplicationNameEnum.Customers;
         LoadAllCustomers();
     }
     [RelayCommand]

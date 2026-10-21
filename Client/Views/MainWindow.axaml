@@ -19,9 +19,6 @@
             <Grid RowDefinitions="*,Auto">
                 <StackPanel Grid.Row="0" Spacing="8">
                     <StackPanel Orientation="Horizontal" Spacing="5" >
-                        <!--  <Image Width="48" Height="40" Source="avares://Client/Assets/Images/runstore.png " /> -->
-                        <!--   <Image Width="60" Source="{SvgImage /Assets/Images/runstore.svg}" ></Image> -->
-                        <!--  <Svg Width="60" Path="/Assets/Images/runstore.svg" /> -->
                         <Image Width="60" Source="/Assets/Images/runningmanstore.jpg" />
                         <TextBlock  VerticalAlignment="Center" Text="The RunningMan Store" FontSize="30" FontFamily="{DynamicResource HeaderFont}" />
                     </StackPanel>

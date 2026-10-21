@@ -1,4 +1,4 @@
-namespace Client.Helpers;
+namespace Client.Enums;
 
 public enum ApplicationNameEnum // this shall help our factory to create correct viewmodel to correct view
 {
@@ -6,5 +6,6 @@ public enum ApplicationNameEnum // this shall help our factory to create correct
     Customers,
     Orders,
     Products,
-    Settings
+    Settings,
+    AddNewProduct
 }

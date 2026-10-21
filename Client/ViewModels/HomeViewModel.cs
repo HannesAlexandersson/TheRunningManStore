@@ -8,6 +8,6 @@ public class HomeViewModel : PageViewModel
     public HomeViewModel()
     {
         PageTitle = "Welcome to RunningManStore TM";
-        PageName = Helpers.ApplicationNameEnum.Home;
+        PageName = Enums.ApplicationNameEnum.Home;
     }
 }

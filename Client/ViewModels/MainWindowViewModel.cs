@@ -9,7 +9,7 @@ public partial class MainWindowViewModel : ViewModelBase // the base class is th
 {
     private readonly PageViewFactory _factory;
     [ObservableProperty] // decorate the variable, remake it to an property somwhere behind the curtains, and let us get access to it anywhere OBS The class MUST be partial for this to work!!!
-    public partial ViewModelBase CurrentView { get; set; } //  there exist an identical file somewhere udner the curtains that avalonia created for us, partial is for better performance 
+    public partial ViewModelBase CurrentView { get; set; } = new(); //  there exist an identical file somewhere udner the curtains that avalonia created for us, partial is for better performance 
 
     public MainWindowViewModel() { } // bara för designen preview ska fungera
 
@@ -20,15 +20,17 @@ public partial class MainWindowViewModel : ViewModelBase // the base class is th
         GoToHome();
     }
     [RelayCommand] // this makes the toolkit mvvm to be able to take these methods, give them new names (GoToHomeCommand) and make them public so we can access them whereveer
-    private void GoToHome() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Home);
+    private void GoToHome() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Home);
     [RelayCommand]
-    private void GoToProducts() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Products);
+    private void GoToProducts() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Products);
     [RelayCommand]
-    private void GoToSettings() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Settings);
+    private void GoToSettings() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Settings);
 
     [RelayCommand]
-    private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Orders);
+    private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Orders);
 
     [RelayCommand]
-    private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Helpers.ApplicationNameEnum.Customers);
+    private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Customers);
+    [RelayCommand]
+    private void GoToAddProduct() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.AddNewProduct);
 }

@@ -8,6 +8,6 @@ public class SettingsViewModel : PageViewModel
     public SettingsViewModel()
     {
         PageTitle = "Settings";
-        PageName = Helpers.ApplicationNameEnum.Settings;
+        PageName = Enums.ApplicationNameEnum.Settings;
     }
 }

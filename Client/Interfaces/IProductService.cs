@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Client.Models;
 
 namespace Client.Interfaces;
@@ -7,5 +8,5 @@ namespace Client.Interfaces;
 
 public interface IProductService
 {
-    List<Product> List(); // vi defierar en regel som säger att om interfacet används så MÅSTE denna meetod implementeras
+    Task<List<Product>> List(); // vi defierar en regel som säger att om interfacet används så MÅSTE denna meetod implementeras
 }

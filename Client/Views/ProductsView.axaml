@@ -12,8 +12,19 @@
   <Design.DataContext>
     <vm:ProductsViewModel></vm:ProductsViewModel>
   </Design.DataContext>
-  <StackPanel>
-    <TextBlock Classes="pageTitle" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
+
+  <StackPanel Spacing="10">
+    <TextBlock Classes="pageTitle" FontWeight="Bold" TextDecorations="Underline" Text="Products" />
+
+    <StackPanel Orientation="Horizontal">
+      <Button  Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToAddProductCommand}" Background="{DynamicResource PrimaryBtnBgColor}">  <!--=" ta dig till parent window däri ska vi hitta mainwindowviemodel och dess datacontext och där finns vår relaycommand metod"-->
+      <StackPanel Orientation="Horizontal" Spacing="10">
+        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe3d4;" Padding="0 5 5 0" Foreground="White" />
+        <Label Content="Add product" FontFamily="{DynamicResource TextFont}" Foreground="White" />
+      </StackPanel>
+      </Button>
+    </StackPanel>
+
     <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
       <Grid ColumnDefinitions="100, 200, 200, *, 60,60" RowDefinitions="*" HorizontalAlignment="Stretch"> <!--add two extra columns with 10 space to fill the extra space-->
       <Label FontSize="25" FontWeight="Bold"  Content="Art.nr" />

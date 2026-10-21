@@ -21,7 +21,7 @@ public partial class OrdersViewModel : PageViewModel
     {
         PageTitle = "ORDERS";
         _services = services;
-        PageName = Helpers.ApplicationNameEnum.Orders;
+        PageName = Enums.ApplicationNameEnum.Orders;
         LoadOrders();
     }
 

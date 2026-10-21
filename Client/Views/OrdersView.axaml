@@ -15,12 +15,12 @@
   <StackPanel>
     <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
     <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
-      <Grid ColumnDefinitions="100,  200, *, 60,60" RowDefinitions="*" HorizontalAlignment="Stretch"> <!--add two extra columns with 10 space to fill the extra space-->
+      <Grid ColumnDefinitions="200,  200, *, 60,60" RowDefinitions="*" HorizontalAlignment="Stretch"> <!--add two extra columns with 10 space to fill the extra space-->
 
-      <Label Grid.Column="0" FontSize="20" FontWeight="Bold"  Content="OrderId" />
-        <Label Grid.Column="3" FontSize="25" FontWeight="Bold"  Content="TotalSum" HorizontalAlignment="Right" />
+      <Label Grid.Column="0" FontSize="20" FontWeight="Bold"  Content="OrderId" HorizontalAlignment="Left" />
+        <Label Grid.Column="1" FontSize="25" FontWeight="Bold"  Content="TotalSum" HorizontalAlignment="Right" />
+        <Label Grid.Column="3" />
         <Label Grid.Column="4" />
-        <Label Grid.Column="5" />
       </Grid>
     </Border>
 
@@ -28,15 +28,32 @@
     <ItemsControl ItemsSource="{Binding Orders}"> <!-- iterative control structure. bind to this list/array/class -->
     <ItemsControl.ItemTemplate> <!--set up template for the iterative data -->
     <DataTemplate>
-      <Grid ColumnDefinitions="100, 200, *, 60, 60">
-        <Label Grid.Column="0"  Content="{Binding OrderId}" />
+      <Border
+        BorderBrush="white"
+        BorderThickness="0,0,0,1"
+        Padding="10"
+        Margin="0,0,0,5">
+        <Grid ColumnDefinitions="100,  *, 200, 60,60">
+          <Label Grid.Column="0"  Content="{Binding OrderId}" HorizontalAlignment="Left" />
+          <!-- iterate through this orders products -->
+          <ItemsControl Grid.Column="1"  ItemsSource="{Binding Products}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="100,100,100">
+                  <Label Grid.Column="0"  Content="{Binding Name}" HorizontalAlignment="Left" />
+                  <Label Grid.Column="1"  Content="{Binding Price}" HorizontalAlignment="Left" />
+                  <Label Grid.Column="2"  Content="{Binding Quantity}" HorizontalAlignment="Left" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          <!-- END of inner loop -->
+          <Label Grid.Column="1"  Content="{Binding TotalSum}" HorizontalAlignment="Right" /> <!-- Add icons to cast and edit -->
+          <Button Grid.Column="3" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding $parent[UserControl].DataContext.EditCommand}" CommandParameter="{Binding OrderId}" />
+          <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding $parent[UserControl].DataContext.DeleteCommand}" CommandParameter="{Binding OrderId}" />
 
-        <Label Grid.Column="3"  Content="{Binding TotalSum}" HorizontalAlignment="Right" /> <!-- Add icons to cast and edit -->
-        <Button Grid.Column="4" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10" Command="{Binding $parent[UserControl].DataContext.EditCommand}" CommandParameter="{Binding OrderId}" />
-        <Button Grid.Column="5" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" Command="{Binding $parent[UserControl].DataContext.DeleteCommand}" CommandParameter="{Binding OrderId}" />
-
-      </Grid>
-
+        </Grid>
+      </Border>
     </DataTemplate>
     </ItemsControl.ItemTemplate>
     </ItemsControl>
