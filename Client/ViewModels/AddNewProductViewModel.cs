@@ -3,39 +3,63 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Client.Interfaces;
 using Client.Models;
+using Client.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
-public partial class AddNewProductViewModel : PageViewModel
+public partial class AddNewProductViewModel : ViewModelBase
 {
-    public Product NewProduct { get; set; } = new()
-    {
-        ItemNumber = "",
-        Name = "",
-        SupplierName = "",
-        Price = 0,
-        Description = ""
-    };
+    [ObservableProperty]
+    public partial string ItemNumber { get; set; } = string.Empty;
+    [ObservableProperty]
+    public partial string Name { get; set; } = string.Empty;
+    [ObservableProperty]
+    public partial string Supplier { get; set; } = string.Empty;
+    [ObservableProperty]
+    public partial int Price { get; set; }
     private readonly IProductService _productService;
     [ObservableProperty]
     public partial ObservableCollection<Product> Products { get; set; } = [];
+    // endast för design och preview , detta ska bort sedan nör vi inte behöver preview längre!
+    // TODO: Ta bort!
     public AddNewProductViewModel()
     {
+        _productService = new ProductServices();
+        PageTitle = "Lägg till en ny produkt";
     }
+    /* **************************************************** */
     public AddNewProductViewModel(IProductService productService)
     {
         _productService = productService;
         PageTitle = "Lägg till en ny produkt";
-        PageName = Enums.ApplicationNameEnum.AddNewProduct;
+
     }
     [RelayCommand]
-    private void Save(string id)
+    private async Task Save(string id)
     {
-        Console.WriteLine("Lägg till produktens uppgifter, " + id);
         // AddProduct(id);
+        // först validera inputten
+
+
+        Product product = new()
+        {
+            ItemNumber = ItemNumber,
+            Name = Name,
+            SupplierName = Supplier,
+            ImageUrl = "bild saknas",
+            Description = "Ny produktbeskrivning",
+            Price = Price,
+        };
+        await _productService.Add(product);
     }
+    [RelayCommand]
+    private void Abort()
+    {
+        Console.WriteLine("Avbryt att lägga till ny produkt");
+    }
+
     private async Task AddProduct(string id)
     {
         try

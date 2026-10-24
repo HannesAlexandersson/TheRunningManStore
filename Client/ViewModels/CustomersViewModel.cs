@@ -7,10 +7,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using Client.Interfaces;
 using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
 
 namespace Client.ViewModels;
 
-public partial class CustomersViewModel : PageViewModel
+public partial class CustomersViewModel : ViewModelBase
 {
     private readonly ICustomerService _service;
     [ObservableProperty]
@@ -24,8 +25,8 @@ public partial class CustomersViewModel : PageViewModel
     {
         PageTitle = "Customer List"; // use the decorated property PageTitle from the base model
         _service = service;
-        PageName = Enums.ApplicationNameEnum.Customers;
-        LoadAllCustomers();
+
+        Init();
     }
     [RelayCommand]
     public void Edit(string id)
@@ -37,11 +38,16 @@ public partial class CustomersViewModel : PageViewModel
     {
         Console.WriteLine("Delete clicked" + id);
     }
-    private void LoadAllCustomers()
+
+    private async void Init() // think of this like a useEffect in react
+    {
+        await LoadAllCustomers();
+    }
+    private async Task LoadAllCustomers()
     {
         try
         {
-            Customers = new ObservableCollection<Customer>(_service.List());
+            Customers = new ObservableCollection<Customer>(await _service.List());
         }
         catch (Exception ex)
         {

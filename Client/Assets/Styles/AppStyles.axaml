@@ -9,6 +9,8 @@
   <!-- Add Styles Here -->
   <Style Selector="Window">
     <Setter Property="FontFamily" Value="{DynamicResource TextFont}" />
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
+    <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}" />
   </Style>
   <Style Selector="TextBlock">
     <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
@@ -24,5 +26,10 @@
     <Setter Property="TextAlignment" Value="Center" />
     <Setter Property="LineSpacing" Value="10" />
   </Style>
+  <Style Selector="Label">
+    <Setter Property="FontSize" Value="20"/>
+  </Style>
+
+
 
 </Styles>

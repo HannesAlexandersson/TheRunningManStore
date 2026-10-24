@@ -4,9 +4,12 @@ using System.Threading.Tasks;
 using Client.Models;
 
 namespace Client.Interfaces;
-// interfaces sysfte är att sätta upp vilka metoder/egenskaper som behövs lose coupled components
+// interfaces purpose is to set up rules for implementation. if someone want to use the interface they MUST implement these things
 
 public interface IProductService
 {
-    Task<List<Product>> List(); // vi defierar en regel som säger att om interfacet används så MÅSTE denna meetod implementeras
+    Task Add(Product product);
+
+    Task<Product> Find(string itemNumber);
+    Task<List<Product>> List();
 }

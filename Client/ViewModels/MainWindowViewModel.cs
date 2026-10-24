@@ -20,17 +20,20 @@ public partial class MainWindowViewModel : ViewModelBase // the base class is th
         GoToHome();
     }
     [RelayCommand] // this makes the toolkit mvvm to be able to take these methods, give them new names (GoToHomeCommand) and make them public so we can access them whereveer
-    private void GoToHome() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Home);
+    private void GoToHome() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Home);
     [RelayCommand]
-    private void GoToProducts() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Products);
+    private void GoToProducts() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Products);
     [RelayCommand]
-    private void GoToSettings() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Settings);
+    private void GoToSettings() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Settings);
 
     [RelayCommand]
-    private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Orders);
+    private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Orders);
 
     [RelayCommand]
-    private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.Customers);
+    private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Customers);
     [RelayCommand]
-    private void GoToAddProduct() => CurrentView = _factory.LoadPageViewModel(Enums.ApplicationNameEnum.AddNewProduct);
+    private void GoToAddProduct() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.AddNewProduct);
+    [RelayCommand]
+    private void GoToEditProduct(string itemNumber) => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.EditProduct, itemNumber);
+
 }

@@ -25,6 +25,9 @@ public static class ServiceCollectionExtensions // utility file som hittar och m
         collection.AddTransient<IProductService, ProductServices>(); // IF anyone ever wants the service then we give then the servoice
         collection.AddTransient<ICustomerService, CustomerServices>();
         collection.AddTransient<IOrderService, OrderServices>();
+
+        collection.AddSingleton<RestDBClient>();
+        collection.AddTransient(typeof(IHttpService<>), typeof(HttpService<>));
         //collection.AddTransient<ISettingsService, SettingsService>();
         // before we always created the product/order/cust etc on start even though they are transient. This happens because the mainwindowviewmodel require them wich created and instance. so to get around this we need to start using pageviewmodels with constructor injection instead of using the viewmodels directly
         //the c is reference to teh servicecollection, name is the name of the page we want to create, and we use switch to match and return the correct thing. 

@@ -13,10 +13,10 @@
     <vm:ProductsViewModel></vm:ProductsViewModel>
   </Design.DataContext>
 
-  <StackPanel Spacing="10">
-    <TextBlock Classes="pageTitle" FontWeight="Bold" TextDecorations="Underline" Text="Products" />
+  <StackPanel Spacing="10" >
+    <TextBlock Classes="pageTitle" FontWeight="Bold" TextDecorations="Underline" Text="{Binding PageTitle}" />
 
-    <StackPanel Orientation="Horizontal">
+    <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
       <Button  Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToAddProductCommand}" Background="{DynamicResource PrimaryBtnBgColor}">  <!--=" ta dig till parent window däri ska vi hitta mainwindowviemodel och dess datacontext och där finns vår relaycommand metod"-->
       <StackPanel Orientation="Horizontal" Spacing="10">
         <Label FontFamily="{DynamicResource IconFont}" Content="&#xe3d4;" Padding="0 5 5 0" Foreground="White" />
@@ -27,7 +27,7 @@
 
     <Border BorderBrush="white" BorderThickness="0 0 0 2" Padding="0 0 0 5">
       <Grid ColumnDefinitions="100, 200, 200, *, 60,60" RowDefinitions="*" HorizontalAlignment="Stretch"> <!--add two extra columns with 10 space to fill the extra space-->
-      <Label FontSize="25" FontWeight="Bold"  Content="Art.nr" />
+      <Label Grid.Column="0" FontSize="25" FontWeight="Bold"  Content="Art.nr"  />
         <Label Grid.Column="1" FontSize="25" FontWeight="Bold"  Content="Name" />
         <Label Grid.Column="2" FontSize="25" FontWeight="Bold"  Content="Supplier" />
         <Label Grid.Column="3" FontSize="25" FontWeight="Bold"  Content="price" HorizontalAlignment="Right" />
@@ -44,7 +44,7 @@
         <Label Grid.Column="1"  Content="{Binding Name}" />
         <Label Grid.Column="2"  Content="{Binding SupplierName}" />
         <Label Grid.Column="3"  Content="{Binding Price}" HorizontalAlignment="Right" /> <!-- since we have bound all in the iteration controll to the list we send into the iterative control we need to tell productview where to look for the editcommand and deletecommand etc using DATACONTEXT -->
-        <Button Grid.Column="4" Command="{Binding $parent[UserControl].DataContext.EditCommand}" CommandParameter="{Binding ItemNumber}"  FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10"/>
+        <Button Grid.Column="4" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditProductCommand}" CommandParameter="{Binding ItemNumber}" FontFamily="{DynamicResource IconFont}" Content="&#xE3AE;" Foreground="Green" Background="Transparent" Padding="10 0 0 10"/>
         <Button Grid.Column="5" Command="{Binding $parent[UserControl].DataContext.DeleteCommand}" CommandParameter="{Binding ItemNumber}" FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10" />
 
       </Grid>

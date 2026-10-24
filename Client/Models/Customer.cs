@@ -2,12 +2,14 @@ using System;
 
 namespace Client.Models;
 
-public partial record class Customer
+public record Customer
 {
-    public string CustomerId { get; set; } = Guid.NewGuid().ToString();
-    public required string Name { get; set; }
-    public string? Address { get; set; }
-    public string? PhoneNumber { get; set; }
-
-
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+    public required string Email { get; set; }
+    public string? Phone { get; set; }
+    public string? AddressLine { get; set; }
+    public string? PostalCode { get; set; }
+    public string? City { get; set; }
 }

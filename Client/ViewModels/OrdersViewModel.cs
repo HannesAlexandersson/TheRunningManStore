@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
-public partial class OrdersViewModel : PageViewModel
+public partial class OrdersViewModel : ViewModelBase
 {
     private readonly IOrderService _services;
 
@@ -21,7 +21,7 @@ public partial class OrdersViewModel : PageViewModel
     {
         PageTitle = "ORDERS";
         _services = services;
-        PageName = Enums.ApplicationNameEnum.Orders;
+
         LoadOrders();
     }
 

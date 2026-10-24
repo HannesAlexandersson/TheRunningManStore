@@ -13,7 +13,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Client.ViewModels;
 
-public partial class ProductsViewModel : PageViewModel
+public partial class ProductsViewModel : ViewModelBase
 {
     private readonly IProductService _service;
     [ObservableProperty]
@@ -24,7 +24,7 @@ public partial class ProductsViewModel : PageViewModel
     {
         PageTitle = "Products";
         _service = service;
-        PageName = Enums.ApplicationNameEnum.Products;
+
         Init();
 
     }

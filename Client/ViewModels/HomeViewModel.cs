@@ -3,11 +3,11 @@ using Avalonia.Controls;
 
 namespace Client.ViewModels;
 
-public class HomeViewModel : PageViewModel
+public class HomeViewModel : ViewModelBase
 {
     public HomeViewModel()
     {
         PageTitle = "Welcome to RunningManStore TM";
-        PageName = Enums.ApplicationNameEnum.Home;
+
     }
 }

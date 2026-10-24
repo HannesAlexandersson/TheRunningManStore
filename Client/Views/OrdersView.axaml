@@ -39,10 +39,9 @@
           <ItemsControl Grid.Column="1"  ItemsSource="{Binding Products}">
             <ItemsControl.ItemTemplate>
               <DataTemplate>
-                <Grid ColumnDefinitions="100,100,100">
+                <Grid ColumnDefinitions="100,100">
                   <Label Grid.Column="0"  Content="{Binding Name}" HorizontalAlignment="Left" />
                   <Label Grid.Column="1"  Content="{Binding Price}" HorizontalAlignment="Left" />
-                  <Label Grid.Column="2"  Content="{Binding Quantity}" HorizontalAlignment="Left" />
                 </Grid>
               </DataTemplate>
             </ItemsControl.ItemTemplate>

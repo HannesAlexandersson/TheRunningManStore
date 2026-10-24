@@ -15,6 +15,7 @@
         <FluentTheme />
         <StyleInclude Source="Assets/Styles/AppStyles.axaml"></StyleInclude>
         <StyleInclude Source="Assets/Styles/MenuButtonStyles.axaml"></StyleInclude>
+        <StyleInclude Source="Assets/Styles/FormButtonStyles.axaml"></StyleInclude>
     </Application.Styles>
     <Application.Resources>
         <!--  set up global resources -->

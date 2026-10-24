@@ -3,11 +3,11 @@ using Avalonia.Controls;
 
 namespace Client.ViewModels;
 
-public class SettingsViewModel : PageViewModel
+public class SettingsViewModel : ViewModelBase
 {
     public SettingsViewModel()
     {
         PageTitle = "Settings";
-        PageName = Enums.ApplicationNameEnum.Settings;
+
     }
 }
