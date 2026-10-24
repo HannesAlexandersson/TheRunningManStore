@@ -29,6 +29,6 @@
     <Setter Property="Foreground" Value="{DynamicResource PrimaryBtnBgColor}" />
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBtnBgColor}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
   </Style>
 </Styles>

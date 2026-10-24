@@ -19,15 +19,15 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="MinWidth" Value="300" />
-        <Setter Property="BorderBrush" Value="White" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="50" />
     </Style>
 
     <Style Selector="Button.form:pointerover /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryTextColor}" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBorderColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBgColor}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>

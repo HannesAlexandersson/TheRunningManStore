@@ -19,27 +19,24 @@ public class HttpService<T> : IHttpService<T> where T : class
         WriteIndented = true
     };
 
+    public async Task Delete(string resource, string id)
+    {
+        try
+        {
+            using HttpClient client = RestDBClient.DBClient();
+
+            var url = $"{resource}/{id}";
+
+            await client.DeleteAsync(url);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
     public async Task<List<T>> Get(string resource)
     {
-        /* var url = $"https://runstore-e099.restdb.io/rest/{resource}";
-
-        // skapa en instance av Http client klassen
-        using HttpClient client = new(); // we want this to be cleaned up when we are done with it. we need the garbage collector to close this, with "using". 
-
-        client.BaseAddress = new Uri(url); // convert the url to uri
-        client.DefaultRequestHeaders.Add("Cache-Control", "none");
-        client.DefaultRequestHeaders.Add("x-apikey", "1b7483a98fd04f94728ae3454d83fd4eea118"); */
-
-        //send the package
-        /*  var response = await client.GetAsync(url);
-
-         if (!response.IsSuccessStatusCode) return [];
-
-         var result = await response.Content.ReadAsStringAsync();
-         var data = JsonSerializer.Deserialize<List<T>>(result, _options) ?? [];
-         //return JsonSerializer.Deserialize<List<T>>(result, _options) ?? [];
-         return data; */
-
         using HttpClient client = RestDBClient.DBClient();
         var response = await client.GetAsync(resource);
         if (!response.IsSuccessStatusCode)
@@ -47,9 +44,9 @@ public class HttpService<T> : IHttpService<T> where T : class
 
         var result = await response.Content.ReadAsStringAsync();
 
-        var data = JsonSerializer.Deserialize<List<T>>(result, _options) ?? [];
+        var dataList = JsonSerializer.Deserialize<List<T>>(result, _options) ?? [];
 
-        return data;
+        return dataList;
 
     }
 
@@ -91,6 +88,26 @@ public class HttpService<T> : IHttpService<T> where T : class
         }
         catch (Exception ex)
         { // throw ex  up in the stack
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task Put(string resource, T data, string objectId)
+    {
+        try
+        {
+            using HttpClient client = RestDBClient.DBClient();
+
+            var url = $"{resource}/{objectId}";
+
+            await client.PutAsJsonAsync<T>(url, data);
+        }
+        catch (HttpRequestException ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        catch (Exception ex)
+        {
             throw new Exception(ex.Message);
         }
     }

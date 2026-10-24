@@ -14,9 +14,15 @@ public class ProductServices : IProductService
         var httpService = new HttpService<Product>();
         await httpService.Post("products", product);
     }
-    public async Task<Product> Find(string itemNumber)
+    public async Task Delete(string id)
     {
         var httpService = new HttpService<Product>();
+        await httpService.Delete("products", id);
+    }
+
+    public async Task<ProductRestDb> Find(string itemNumber)
+    {
+        var httpService = new HttpService<ProductRestDb>();
         var searchCriteria = "{\"itemNumber\":" + "\"" + itemNumber + "\"}";
         return await httpService.Get("products", searchCriteria);
     }
@@ -27,4 +33,9 @@ public class ProductServices : IProductService
         return products;
     }
 
+    public async Task Update(Product product, string _objectId)
+    {
+        var httpService = new HttpService<Product>();
+        await httpService.Put("products", product, _objectId);
+    }
 }

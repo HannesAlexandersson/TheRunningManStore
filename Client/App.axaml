@@ -23,6 +23,7 @@
         <!--  <SolidColorBrush x:Key="PrimaryBgColor">#030331</SolidColorBrush> -->
         <SolidColorBrush x:Key="PrimaryBgColor">#2B0841</SolidColorBrush>
         <SolidColorBrush x:Key="PrimaryBtnBgColor">#4F2472</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryBorderColor">#FF00FF</SolidColorBrush>
         <LinearGradientBrush x:Key="PrimaryBgGradient" StartPoint="0% 0%" EndPoint="100% 0%" >
             <!--  <GradientStop Offset="0" Color="#04041f" />
             <GradientStop Offset="1" Color="#151e3e" /> -->

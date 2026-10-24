@@ -53,11 +53,15 @@ public partial class AddNewProductViewModel : ViewModelBase
             Price = Price,
         };
         await _productService.Add(product);
+        ClearData();
     }
     [RelayCommand]
-    private void Abort()
+    private void ClearData()
     {
-        Console.WriteLine("Avbryt att lägga till ny produkt");
+        ItemNumber = string.Empty;
+        Name = string.Empty;
+        Supplier = string.Empty;
+        Price = 0;
     }
 
     private async Task AddProduct(string id)

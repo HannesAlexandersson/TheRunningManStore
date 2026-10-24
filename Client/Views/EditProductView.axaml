@@ -14,6 +14,50 @@
   </Design.DataContext>
   <StackPanel>
     <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
-    <TextBlock Classes="pageTitle" Text="{Binding ProductName}" />
+
+    <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="0 30" >
+
+      <StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="20">
+          <Grid RowSpacing="10" ColumnSpacing="10" ColumnDefinitions="200, *" RowDefinitions="auto, auto, auto, auto">
+
+            <Label Classes="form" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Art.Num" />
+            <TextBox Classes="form" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding ItemNumber}" />
+
+            <Label Classes="form" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="Product Name" />
+            <TextBox Classes="form" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding ProductName}"  />
+
+            <Label Classes="form" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="Supplier" />
+            <TextBox Classes="form" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding Supplier}" />
+
+            <Label Classes="form" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Price" />
+            <TextBox Classes="form" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Text="{Binding Price}" />
+
+          </Grid>
+
+          <Border BorderBrush="{DynamicResource PrimaryBorderColor}" BorderThickness="1" Padding="5">
+            <Image Source="{Binding Image}" MaxWidth="200" Width="200" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" Margin="0 30 0 0">
+          <Button Classes="form" >
+            <StackPanel Orientation="Horizontal">
+              <Label FontFamily="{DynamicResource IconFont}" Content="&#xe08a;" />
+              <Label Content="Exit" />
+            </StackPanel>
+          </Button>
+
+          <Button Classes="form"  Command="{Binding SaveCommand}">
+            <StackPanel Orientation="Horizontal">
+              <Label FontFamily="{DynamicResource IconFont}" Content="&#xe248;" />
+              <Label Content="Save" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+
+      </StackPanel>
+
+    </Border>
   </StackPanel>
 </UserControl>

@@ -24,7 +24,7 @@
 
       </Grid>
     </Border>
-
+    <ScrollViewer MaxHeight="500"><!--set up template for the iterative data -->
     <ItemsControl ItemsSource="{Binding Customers}">
       <ItemsControl.ItemTemplate>
         <DataTemplate>
@@ -42,6 +42,7 @@
         </DataTemplate>
       </ItemsControl.ItemTemplate>
     </ItemsControl>
+    </ScrollViewer>
   </StackPanel>
 
 </UserControl>

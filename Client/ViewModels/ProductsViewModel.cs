@@ -34,9 +34,22 @@ public partial class ProductsViewModel : ViewModelBase
         Console.WriteLine("Edit clicked" + itemNumber);
     }
     [RelayCommand]
-    public void Delete(string itemNumber)
+    public async Task Delete(string id)
     {
-        Console.WriteLine("Delete clicked" + itemNumber);
+        try
+        {
+            ProductRestDb product = await _service.Find(id);
+            if (product is not null)
+            {
+                await _service.Delete(product._id);
+                await LoadProducts();
+            }
+        }
+        catch (Exception ex)
+        {
+
+            Console.Write(ex.Message);
+        }
     }
 
     private async void Init() // think of this like a useEffect in react

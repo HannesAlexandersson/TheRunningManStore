@@ -30,6 +30,24 @@
     <Setter Property="FontSize" Value="20"/>
   </Style>
 
+  <Style Selector="Label.form">
+    <Setter Property="FontSize" Value="15"/>
+    <Setter Property="Padding" Value="0 5" />
+  </Style>
+
+  <Style Selector="TextBox">
+    <Setter Property="MaxWidth" Value="300" />
+    <Setter Property="MinWidth" Value="300" />
+    <Setter Property="Background" Value="#C5EDC6E5" />
+    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+  <Style Selector="Button.primBtn">
+    <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}" />
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
+    <Setter Property="Padding" Value="20 30" />
+
+  </Style>
 
 
 </Styles>

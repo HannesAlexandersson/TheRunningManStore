@@ -34,9 +34,8 @@
                 </Grid>
 
                 <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
-                    <Button BorderBrush="White" Content="Avbryt" Command="{Binding AbortCommand}"
-                            HorizontalAlignment="Center" Padding="25 5"/>
-                    <Button BorderBrush="White" Content="Spara" Command="{Binding SaveCommand}"
+                    <Button BorderBrush="White" Content="Exit" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToProductsCommand}" HorizontalAlignment="Center" Padding="25 5"/>
+                    <Button BorderBrush="White" Content="Save" Command="{Binding SaveCommand}"
                             HorizontalAlignment="Center" Padding="25 5"/>
                 </StackPanel>
             </StackPanel>
