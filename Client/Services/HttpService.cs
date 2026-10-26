@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Client.Helpers;
 using Client.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace Client.Services;
 
@@ -24,11 +25,15 @@ public class HttpService<T> : IDisposable, IHttpService<T> where T : class
 
     public HttpService()
     {
-        _baseUrl = $"https://runstore-e099.restdb.io/rest/";
+        var config = new ConfigurationBuilder().AddJsonFile("AppSettings.json").Build();
+        _baseUrl = config.GetSection("Settings:BaseUrl").Value!;
+        var key = config.GetSection("Settings:ApiKey").Value!;
         _httpClient = new();
-        _httpClient.BaseAddress = new Uri(_baseUrl);
-        _httpClient.DefaultRequestHeaders.Add("Cache-Control", "none");
-        _httpClient.DefaultRequestHeaders.Add("x-apikey", "1b7483a98fd04f94728ae3454d83fd4eea118");
+        {
+            _httpClient.BaseAddress = new Uri(_baseUrl);
+            _httpClient.DefaultRequestHeaders.Add("Cache-Control", "none");
+            _httpClient.DefaultRequestHeaders.Add("x-apikey", key);
+        }
     }
 
     public async Task Delete(string resource, string id)
@@ -51,6 +56,7 @@ public class HttpService<T> : IDisposable, IHttpService<T> where T : class
     public void Dispose()
     {
         _httpClient.Dispose();
+        GC.SuppressFinalize(this);
     }
 
     public async Task<List<T>> Get(string resource)
