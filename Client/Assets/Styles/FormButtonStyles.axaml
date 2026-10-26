@@ -12,8 +12,8 @@
     <!-- Add Styles Here -->
 
     <Style Selector="Button.form">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
-        <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryBg}" />
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Padding" Value="30 15"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -25,9 +25,9 @@
     </Style>
 
     <Style Selector="Button.form:pointerover /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryText}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBorderColor}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBgColor}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBg}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>

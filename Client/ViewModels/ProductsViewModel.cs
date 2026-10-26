@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Avalonia.Markup.Xaml.Templates;
 using Client.Interfaces;
 using Client.Models;
 using Client.Repositories;
@@ -15,6 +16,8 @@ namespace Client.ViewModels;
 
 public partial class ProductsViewModel : ViewModelBase
 {
+    [ObservableProperty]
+    public partial bool ShowDialog { get; set; }
     private readonly IProductService _service;
     [ObservableProperty]
     public partial ObservableCollection<Product> Products { get; set; } = []; // instead of generic list and array we use ObservableCollection for auto updating the collection whenever it changes
@@ -38,12 +41,13 @@ public partial class ProductsViewModel : ViewModelBase
     {
         try
         {
-            ProductRestDb product = await _service.Find(id);
-            if (product is not null)
-            {
-                await _service.Delete(product._id);
-                await LoadProducts();
-            }
+            ShowDialog = true;
+            /*  ProductRestDb product = await _service.Find(id);
+             if (product is not null)
+             {
+                 await _service.Delete(product._id);
+                 await LoadProducts();
+             } */
         }
         catch (Exception ex)
         {
@@ -51,7 +55,18 @@ public partial class ProductsViewModel : ViewModelBase
             Console.Write(ex.Message);
         }
     }
-
+    [RelayCommand]
+    private void Confirm()
+    {
+        Console.WriteLine("Deleting the product!");
+        ShowDialog = false;
+    }
+    [RelayCommand]
+    private void Cancel()
+    {
+        Console.WriteLine("Dont delete the product!");
+        ShowDialog = false;
+    }
     private async void Init() // think of this like a useEffect in react
     {
         await LoadProducts();

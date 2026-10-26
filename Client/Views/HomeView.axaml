@@ -6,8 +6,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Client.Views.HomeView"
              x:DataType="vm:HomeViewModel"
-             Background="{DynamicResource PrimaryBgColor}"
-             Foreground="{DynamicResource PrimaryTextColor}">
+             Background="{DynamicResource PrimaryBg}"
+             Foreground="{DynamicResource PrimaryText}">
       <StackPanel>
 
             <TextBlock Classes="homeViewTitle" Text="Welcome to Running man" />

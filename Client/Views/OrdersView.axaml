@@ -6,8 +6,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Client.Views.OrdersView"
              x:DataType="vm:OrdersViewModel"
-             Background="{DynamicResource PrimaryBgColor}"
-             Foreground="{DynamicResource PrimaryTextColor}"
+             Background="{DynamicResource PrimaryBg}"
+             Foreground="{DynamicResource PrimaryText}"
              >
   <Design.DataContext>
     <vm:OrdersViewModel></vm:OrdersViewModel>
