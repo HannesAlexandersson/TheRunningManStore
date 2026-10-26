@@ -10,8 +10,11 @@ using Client.Interfaces;
 
 namespace Client.Services;
 
-public class HttpService<T> : IHttpService<T> where T : class
+public class HttpService<T> : IDisposable, IHttpService<T> where T : class
 {
+
+    private readonly HttpClient _httpClient;
+    private readonly string _baseUrl = string.Empty;
     private readonly JsonSerializerOptions _options = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -19,15 +22,25 @@ public class HttpService<T> : IHttpService<T> where T : class
         WriteIndented = true
     };
 
+    public HttpService()
+    {
+        _baseUrl = $"https://runstore-e099.restdb.io/rest/";
+        _httpClient = new();
+        _httpClient.BaseAddress = new Uri(_baseUrl);
+        _httpClient.DefaultRequestHeaders.Add("Cache-Control", "none");
+        _httpClient.DefaultRequestHeaders.Add("x-apikey", "1b7483a98fd04f94728ae3454d83fd4eea118");
+    }
+
     public async Task Delete(string resource, string id)
     {
         try
         {
-            using HttpClient client = RestDBClient.DBClient();
+            //  using HttpClient client = RestDBClient.DBClient();
 
             var url = $"{resource}/{id}";
 
-            await client.DeleteAsync(url);
+            // await client.DeleteAsync(url);
+            await _httpClient.DeleteAsync(_baseUrl + url);
         }
         catch (Exception ex)
         {
@@ -35,10 +48,16 @@ public class HttpService<T> : IHttpService<T> where T : class
         }
     }
 
+    public void Dispose()
+    {
+        _httpClient.Dispose();
+    }
+
     public async Task<List<T>> Get(string resource)
     {
-        using HttpClient client = RestDBClient.DBClient();
-        var response = await client.GetAsync(resource);
+        //  using HttpClient client = RestDBClient.DBClient();
+        // var response = await client.GetAsync(resource);
+        var response = await _httpClient.GetAsync(resource);
         if (!response.IsSuccessStatusCode)
             return [];
 
@@ -56,8 +75,8 @@ public class HttpService<T> : IHttpService<T> where T : class
         {
             var url = $"{resource}?q={predicate}"; // concat the baseurl with resource and the queryparameter
             using HttpClient client = RestDBClient.DBClient();
-            var response = await client.GetAsync(url);
-
+            // var response = await client.GetAsync(url);
+            var response = await _httpClient.GetAsync(_baseUrl + url);
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync(); // this could be null so we need to check null 
@@ -83,8 +102,9 @@ public class HttpService<T> : IHttpService<T> where T : class
     {
         try
         { //use the new client class
-            using HttpClient client = RestDBClient.DBClient();
-            await client.PostAsJsonAsync<T>(resourse, data);
+          //  using HttpClient client = RestDBClient.DBClient();
+          //  await client.PostAsJsonAsync<T>(resourse, data);
+            await _httpClient.PostAsJsonAsync<T>(resourse, data);
         }
         catch (Exception ex)
         { // throw ex  up in the stack
@@ -96,11 +116,12 @@ public class HttpService<T> : IHttpService<T> where T : class
     {
         try
         {
-            using HttpClient client = RestDBClient.DBClient();
+            // using HttpClient client = RestDBClient.DBClient();
 
             var url = $"{resource}/{objectId}";
 
-            await client.PutAsJsonAsync<T>(url, data);
+            // await client.PutAsJsonAsync<T>(url, data);
+            await _httpClient.PutAsJsonAsync<T>(_baseUrl + url, data);
         }
         catch (HttpRequestException ex)
         {

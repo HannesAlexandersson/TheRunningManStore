@@ -30,17 +30,17 @@ public partial class EditProductViewModel : ViewModelBase
     public EditProductViewModel()
     {
         _service = new ProductServices();
-        PageTitle = "Uppdatera produkt: ";
+        PageTitle = "Update Product: ";
     }
     public EditProductViewModel(string itemNumber)
     {
         _service = new ProductServices();
-        PageTitle = "Uppdatera produkt: " + itemNumber;
+        PageTitle = "Update Product: " + itemNumber;
         _itemNumber = itemNumber;
     }
     public EditProductViewModel(string itemNumber, IProductService service)
     {
-        PageTitle = "Uppdatera produkt: " + itemNumber;
+        PageTitle = "Update Product: " + itemNumber;
         _service = service;
         _itemNumber = itemNumber;
         Init();

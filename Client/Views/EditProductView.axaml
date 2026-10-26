@@ -15,7 +15,7 @@
   <StackPanel>
     <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
 
-    <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="0 30" >
+    <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="0 30" Background="{DynamicResource PrimaryBgGradient}" >
 
       <StackPanel>
         <StackPanel Orientation="Horizontal" Spacing="20">
@@ -41,7 +41,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" Margin="0 30 0 0">
-          <Button Classes="form" >
+          <Button Classes="form" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToProductsCommand}" >
             <StackPanel Orientation="Horizontal">
               <Label FontFamily="{DynamicResource IconFont}" Content="&#xe08a;" />
               <Label Content="Exit" />

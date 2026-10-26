@@ -16,9 +16,9 @@
         <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
 
         <Border BorderBrush="White" BorderThickness="1" Padding="20" Margin="0 20 0 0"
-                MinWidth="400" HorizontalAlignment="Center">
+                MinWidth="400" HorizontalAlignment="Center" Background="{DynamicResource PrimaryBgGradient}">
             <StackPanel Spacing="15">
-                <Grid ColumnDefinitions="*, 200" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="12">
+                <Grid ColumnDefinitions="*, 300" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="15">
 
                     <Label Grid.Row="0" Grid.Column="0" Content="Artikelnr" VerticalAlignment="Center"/>
                     <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ItemNumber}" Background="white"/>

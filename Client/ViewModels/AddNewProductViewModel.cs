@@ -48,7 +48,7 @@ public partial class AddNewProductViewModel : ViewModelBase
             ItemNumber = ItemNumber,
             Name = Name,
             SupplierName = Supplier,
-            ImageUrl = "bild saknas",
+            ImageUrl = "https://res.cloudinary.com/softtech-dev/image/upload/v1773483409/no-image_ymlpwk.png",
             Description = "Ny produktbeskrivning",
             Price = Price,
         };
