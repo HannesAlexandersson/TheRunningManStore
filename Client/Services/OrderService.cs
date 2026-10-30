@@ -43,7 +43,3 @@ public class OrderServices : IOrderService
 
 
 }
-
-public class OrderRestDb
-{
-}

@@ -56,9 +56,7 @@
                     FontFamily="{DynamicResource IconFont}"
                     Content="&#xE3AE;"
                     />
-            <!--   Foreground="{DynamicResource PrimarySafe}"
-            Background="Transparent"
-            Padding="10 0 0 10" -->
+
             <Button Grid.Column="5"
                     Classes="danger"
                     Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
@@ -79,17 +77,19 @@
       </StackPanel>
     </ScrollViewer>
     <Popup IsOpen="{Binding ShowDialog}" Placement="Center">
-      <Border Padding="30" BorderBrush="{DynamicResource danger}" BorderThickness="2" Background="#D4882A">
+      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="White" BorderThickness="2" CornerRadius="30">
+
         <StackPanel>
           <StackPanel Spacing="20">
-            <TextBlock Padding="20" Text="Are you sure? " Foreground="{DynamicResource danger}" FontSize="30" />
+            <TextBlock Padding="20" Text="Are you sure you want to delete the product? " Foreground="{DynamicResource danger}" FontSize="30" />
           </StackPanel>
-          <StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Ja" Padding="10" Command="{Binding ConfirmCommand}" />
-            <Button Content="Nej" Padding="10" Command="{Binding CancelCommand}"  />
+          <StackPanel Spacing="20" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Classes="warning" Content="Yes" Padding="10" Command="{Binding ConfirmCommand}" />
+            <Button Classes="warning" Content="No" Padding="10" Command="{Binding CancelCommand}"  />
           </StackPanel>
         </StackPanel>
       </Border>
     </Popup>
+
   </StackPanel>
 </UserControl>

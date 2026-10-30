@@ -13,8 +13,8 @@ namespace Client.ViewModels;
 
 public partial class EditProductViewModel : ViewModelBase
 {
-    private readonly IProductService _service;
-    private readonly string _itemNumber = string.Empty; // rekom stättet att göra det på
+    private readonly IProductService? _service;
+    private string _itemNumber = string.Empty; // rekom stättet att göra det på
     private string _imageUrl = string.Empty;
     private string _objectId = string.Empty;
     [ObservableProperty]
@@ -27,31 +27,21 @@ public partial class EditProductViewModel : ViewModelBase
     public partial int Price { get; set; } = 0;
     [ObservableProperty]
     public partial Bitmap? Image { get; set; } // it might no exist an image
-    public EditProductViewModel()
+    public EditProductViewModel() { }
+
+    public EditProductViewModel(IProductService service)
     {
-        _service = new ProductServices();
+        _service = service;
         PageTitle = "Update Product: ";
     }
-    public EditProductViewModel(string itemNumber)
+    public async void Init(string itemNumber)
     {
-        _service = new ProductServices();
-        PageTitle = "Update Product: " + itemNumber;
         _itemNumber = itemNumber;
-    }
-    public EditProductViewModel(string itemNumber, IProductService service)
-    {
-        PageTitle = "Update Product: " + itemNumber;
-        _service = service;
-        _itemNumber = itemNumber;
-        Init();
-    }
-    private async void Init()
-    {
         await GetProduct();
     }
     private async Task GetProduct()
     {
-        var product = await _service.Find(_itemNumber);
+        var product = await _service!.Find(_itemNumber);
         _objectId = product._id;
         // _imageUrl = product.ImageUrl ?? "https://res.cloudinary.com/softtech-dev/image/upload/v1773483409/no-image_ymlpwk.png";
         _imageUrl = string.IsNullOrWhiteSpace(product.ImageUrl)
@@ -81,6 +71,6 @@ public partial class EditProductViewModel : ViewModelBase
             Price = Price
         };
 
-        await _service.Update(product, _objectId);
+        await _service!.Update(product, _objectId);
     }
 }

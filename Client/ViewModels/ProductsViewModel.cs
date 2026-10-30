@@ -18,16 +18,22 @@ public partial class ProductsViewModel : ViewModelBase
 {
     [ObservableProperty]
     public partial bool ShowDialog { get; set; }
-    private readonly IProductService _service;
+    private readonly IProductService? _service;
+    private readonly MainWindowViewModel? _mainWindowVm;
+    private string _productId = string.Empty;
+
     [ObservableProperty]
     public partial ObservableCollection<Product> Products { get; set; } = []; // instead of generic list and array we use ObservableCollection for auto updating the collection whenever it changes
 
-    public ProductsViewModel() { }
-    public ProductsViewModel(IProductService service) // when i start this class i say "I need this service becasue the service know how this class interface works. 
+    public ProductsViewModel()
+    {
+        PageTitle = "Products";
+    }
+    public ProductsViewModel(IProductService service, MainWindowViewModel mainWindowVm) // inject the mainwindowvm into this vm via the new pageviewfactory
     {
         PageTitle = "Products";
         _service = service;
-
+        _mainWindowVm = mainWindowVm;
         Init();
 
     }
@@ -41,13 +47,10 @@ public partial class ProductsViewModel : ViewModelBase
     {
         try
         {
+            _productId = id;
+            _mainWindowVm!.IsBusy = true;
             ShowDialog = true;
-            /*  ProductRestDb product = await _service.Find(id);
-             if (product is not null)
-             {
-                 await _service.Delete(product._id);
-                 await LoadProducts();
-             } */
+
         }
         catch (Exception ex)
         {
@@ -56,16 +59,24 @@ public partial class ProductsViewModel : ViewModelBase
         }
     }
     [RelayCommand]
-    private void Confirm()
+    private async Task Confirm()
     {
-        Console.WriteLine("Deleting the product!");
         ShowDialog = false;
+        ProductRestDb product = await _service!.Find(_productId);
+        if (product is not null)
+        {
+            await _service!.Delete(product._id);
+            await LoadProducts();
+        }
+
+        _mainWindowVm!.IsBusy = false;
     }
     [RelayCommand]
     private void Cancel()
     {
         Console.WriteLine("Dont delete the product!");
         ShowDialog = false;
+        _mainWindowVm!.IsBusy = false;
     }
     private async void Init() // think of this like a useEffect in react
     {
@@ -75,7 +86,7 @@ public partial class ProductsViewModel : ViewModelBase
     {
         try
         {
-            Products = new ObservableCollection<Product>(await _service.List());
+            Products = new ObservableCollection<Product>(await _service!.List());
         }
         catch (Exception ex)
         {

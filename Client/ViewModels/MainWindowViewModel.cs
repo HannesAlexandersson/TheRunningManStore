@@ -7,10 +7,11 @@ namespace Client.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase // the base class is the one that inherits from observableobject now
 {
-    private readonly PageViewFactory _factory;
+    private readonly PageViewFactory? _factory; //temporary nullable just fir the preview
     [ObservableProperty] // decorate the variable, remake it to an property somwhere behind the curtains, and let us get access to it anywhere OBS The class MUST be partial for this to work!!!
     public partial ViewModelBase CurrentView { get; set; } = new(); //  there exist an identical file somewhere udner the curtains that avalonia created for us, partial is for better performance 
-
+    [ObservableProperty]
+    public partial bool IsBusy { get; set; }
     public MainWindowViewModel() { } // bara för designen preview ska fungera
 
     // OBS PÅ FREDAG SKA VI GÖRA OM DETTA TILL ETT INTERFACE ISTÄLLET FÖR ATT TA IN FACTORYN I KONSTRUKTORN!!!
@@ -20,23 +21,24 @@ public partial class MainWindowViewModel : ViewModelBase // the base class is th
         GoToHome();
     }
     [RelayCommand] // this makes the toolkit mvvm to be able to take these methods, give them new names (GoToHomeCommand) and make them public so we can access them whereveer
-    private void GoToHome() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Home);
+    private void GoToHome() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.Home);
     [RelayCommand]
-    private void GoToProducts() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Products);
+    private void GoToProducts() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.Products);
     [RelayCommand]
-    private void GoToSettings() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Settings);
-
+    private void GoToSettings() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.Settings);
     [RelayCommand]
-    private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Orders);
+    private void GoToOrders() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.Orders);
     [RelayCommand]
-    private void GoToAddOrder() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.AddOrder);
-
-
+    private void GoToAddOrder() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.AddOrder);
     [RelayCommand]
-    private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Customers);
+    private void GoToCustomers() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.Customers);
     [RelayCommand]
-    private void GoToAddProduct() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.AddProduct);
+    private void GoToAddProduct() => CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.AddProduct);
     [RelayCommand]
-    private void GoToEditProduct(string itemNumber) => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.EditProduct, itemNumber);
+    private void GoToEditProduct(string itemNumber)
+    {
+        CurrentView = _factory!.LoadPageViewModel(Enums.PageViewsEnum.EditProduct); // vi vill ha tag i vår 
+        ((EditProductViewModel)CurrentView).Init(itemNumber); // typa om currentview som är viewmodelbase till editproductviewmodel och anropa init metoden däri och skicka med itemnumber
+    }
 
 }

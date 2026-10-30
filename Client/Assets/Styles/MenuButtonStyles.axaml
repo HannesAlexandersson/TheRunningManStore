@@ -15,6 +15,12 @@
 
         <Button Classes="danger" FontFamily="{DynamicResource IconFont}" Content="&#xe4a6;" />
 
+        <Button Classes="warning">
+          <StackPanel Orientation="Horizontal">
+            <Label Padding="0 5" FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
+            <Label FontSize="20" Content="Knapp"/>
+          </StackPanel>
+        </Button>
 
       </StackPanel>
 
@@ -46,6 +52,18 @@
   <Style Selector="Button.safe">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource Safe}" />
+  </Style>
+  <Style Selector="Button.warning">
+    <Setter Property="Foreground" Value="{DynamicResource WarningColor}" />
+    <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="Padding" Value="15 10"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="BorderBrush" Value="{DynamicResource WarningColor}"/>
+    <Setter Property="BorderThickness" Value="3"/>
+    <Setter Property="CornerRadius" Value="50"/>
+
   </Style>
   <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
     <Setter Property="Background" Value="Transparent" />

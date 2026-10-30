@@ -15,4 +15,9 @@
     <GradientStop Offset="0" Color="#2B0841" />
     <GradientStop Offset="1" Color="#48088C" />
   </LinearGradientBrush>
+
+  <LinearGradientBrush x:Key="WarningPopUpGradient" StartPoint="0% 0%" EndPoint="0% 100%">
+    <GradientStop Offset="0" Color="{DynamicResource PrimaryDanger}"/>
+    <GradientStop Offset="1" Color="{DynamicResource WarningColor}"/>
+  </LinearGradientBrush>
 </ResourceDictionary>
