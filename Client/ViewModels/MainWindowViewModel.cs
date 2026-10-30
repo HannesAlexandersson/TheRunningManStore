@@ -28,11 +28,14 @@ public partial class MainWindowViewModel : ViewModelBase // the base class is th
 
     [RelayCommand]
     private void GoToOrders() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Orders);
+    [RelayCommand]
+    private void GoToAddOrder() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.AddOrder);
+
 
     [RelayCommand]
     private void GoToCustomers() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.Customers);
     [RelayCommand]
-    private void GoToAddProduct() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.AddNewProduct);
+    private void GoToAddProduct() => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.AddProduct);
     [RelayCommand]
     private void GoToEditProduct(string itemNumber) => CurrentView = _factory.LoadPageViewModel(Enums.PageViewsEnum.EditProduct, itemNumber);
 

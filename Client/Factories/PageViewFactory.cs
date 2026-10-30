@@ -16,8 +16,10 @@ public class PageViewFactory : IPageViewFactory
             PageViewsEnum.Home => new HomeViewModel(),
             PageViewsEnum.Products => new ProductsViewModel(new ProductServices()),
             PageViewsEnum.Customers => new CustomersViewModel(new CustomerServices()),
-            PageViewsEnum.AddNewProduct => new AddNewProductViewModel(new ProductServices()),
+            PageViewsEnum.AddProduct => new AddNewProductViewModel(new ProductServices()),
             PageViewsEnum.Orders => new OrdersViewModel(new OrderServices()),
+            PageViewsEnum.AddOrder => new AddOrderViewModel(),
+            PageViewsEnum.Settings => new SettingsViewModel(),
             _ => throw new InvalidOperationException("What ypu wanted could not be found"),
         };
     }

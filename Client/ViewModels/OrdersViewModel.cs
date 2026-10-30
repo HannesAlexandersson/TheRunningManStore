@@ -2,11 +2,11 @@
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Client.Models;
-using Client.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Client.Services;
 using Client.Interfaces;
 using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
 
 namespace Client.ViewModels;
 
@@ -17,13 +17,19 @@ public partial class OrdersViewModel : ViewModelBase
     [ObservableProperty]
     public partial ObservableCollection<Orders> Orders { get; set; } = [];
     public OrdersViewModel() { }
-    public OrdersViewModel(IOrderService services)
+    public OrdersViewModel(IOrderService ordersService)
     {
-        PageTitle = "ORDERS";
-        _services = services;
+        _services = ordersService;
+        PageTitle = "Beställningar";
+        Init();
 
-        LoadOrders();
     }
+
+    private async void Init()
+    {
+        await LoadOrders();
+    }
+
 
     [RelayCommand]
     public void Edit(string id)
@@ -36,16 +42,18 @@ public partial class OrdersViewModel : ViewModelBase
         Console.WriteLine("Delete clicked" + id);
     }
 
-    private void LoadOrders()
+    private async Task LoadOrders()
     {
         try
         {
-            Orders = new ObservableCollection<Orders>(_services.List());
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+            Orders = new ObservableCollection<Orders>(await _services.List());
 
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
     }
 }
+

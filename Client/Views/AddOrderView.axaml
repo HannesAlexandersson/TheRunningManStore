@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Client.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Client.Views.AddOrderView"
+             x:DataType="vm:AddOrderViewModel">
+
+
+  <Design.DataContext>
+    <vm:AddOrderViewModel></vm:AddOrderViewModel>
+  </Design.DataContext>
+
+
+  <StackPanel>
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" />
+
+    <Border HorizontalAlignment="Center" Padding="0 30" BorderBrush="White" BorderThickness="0">
+      <StackPanel>
+
+        <StackPanel Spacing="20" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+          <Button Classes="form" Command="{Binding AddOrderCommand}">
+            <StackPanel Orientation="Horizontal">
+              <Label Content="Lägg till" />
+            </StackPanel>
+          </Button>
+
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+  </StackPanel>
+
+</UserControl>
